@@ -1,17 +1,24 @@
 {
   "name": "newsletter-sign-up",
   "version": "0.1.0",
+  "homepage": "https://mister-mandarin.github.io/newsletter-sign-up",
   "private": true,
   "dependencies": {
+    "@babel/eslint-parser": "^7.22.5",
+    "@svgr/webpack": "$@svgr/webpack",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^3.3.2"
   },
   "scripts": {
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +41,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "ajv": "^7.2.4",
+    "babel-loader": "^9.1.2",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^8.43.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "gh-pages": "^5.0.0",
+    "stylelint": "^15.9.0",
+    "stylelint-config-clean-order": "^5.0.1",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-styled-components": "^0.1.1"
   }
 }
