@@ -1,0 +1,84 @@
+.wrapper {
+    display: flex;
+    gap: 40px;
+
+    margin: 10px;
+    padding: 50px;
+
+    background-color: var(--white);
+    border-radius: 24px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+
+    max-width: 400px;
+    margin: 20px;
+}
+
+ul {
+    padding: 0;
+}
+
+ul > li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+ul > li::before {
+    content: url("./images/icon-list.svg");
+    margin-right: 20px;
+}
+
+.img {
+    content: url("./images/illustration-sign-up-desktop.svg");
+    vertical-align: bottom;
+}
+
+@media screen and (width <= 950px) {
+    .wrapper {
+        flex-flow: column-reverse wrap;
+        padding: 0;
+    }
+
+    .img {
+        content: url("./images/illustration-sign-up-mobile.svg");
+
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -5%);
+
+        width: 110%;
+
+        vertical-align: top;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+
+@media screen and (width <= 490px) {
+
+    body {
+    }
+
+    .wrapper {
+        gap: 0;
+        margin: 0;
+    }
+
+    .content {
+        padding: 0;
+        margin: 0;
+    }
+
+    .img {
+        width: 100%;
+    }
+}
