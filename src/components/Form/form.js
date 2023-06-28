@@ -1,9 +1,29 @@
 import styles from './form.module.css'
 import UiTag from '../../helpers/uiTag/uiTag';
 import UiButton from '../../helpers/uiButton/uiButton';
-import {ReactComponent as IconPs} from './images/illustration-sign-up-desktop.svg'
+import {ReactComponent as IconPs} from './images/illustration-sign-up-desktop.svg';
+import cn from 'classnames'
+import {useState} from 'react';
 
-export default function Form() {
+export default function Form({success}) {
+
+  const [errorValidate, setErrorValidate] = useState(false);
+  const [inputValue, setInputValue] = useState('')
+  const handleChange = (e) => {
+    setInputValue(e.target.value)
+    setErrorValidate(false)
+  }
+
+  const validation = (e) => {
+    e.preventDefault();
+    const validateEmailRegex = /^\S+@\S+\.\S+$/;
+    if (validateEmailRegex.test(inputValue) && inputValue !== '') {
+      success(inputValue)
+    } else {
+      setErrorValidate(true)
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -14,8 +34,19 @@ export default function Form() {
           <li>Measuring to ensure updates are a success</li>
           <li>And much more!</li>
         </ul>
-        <input type="email" name="" id=""/>
-        <UiButton buttonText={'Subscribe to monthly newsletter'}/>
+        <form onSubmit={validation} className={styles.form}>
+          <label>
+            <span>Email address</span>
+            {errorValidate && <span className={styles.error}>Valid email required</span>}
+            <input onChange={handleChange} value={inputValue}
+              className={cn(styles.input, {
+                [styles.inputError]: errorValidate
+              })}
+              type="text"
+              placeholder="email@example.ru"/>
+          </label>
+          <UiButton buttonText={'Subscribe to monthly newsletter'}/>
+        </form>
       </div>
 
       <div className={styles.img}
